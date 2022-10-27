@@ -7,7 +7,6 @@ import android.opengl.GLES20;
 
 import com.example.ncnnmobiledetection.utils.Utils;
 
-//import junit.framework.Assert;
 
 public class GLTextureOES extends GLTexture2D {
 
@@ -33,10 +32,6 @@ public class GLTextureOES extends GLTexture2D {
         GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
-
-//        GLES20.glTexImage2D(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0, GLES20.GL_RGBA, width, height, 0,
-//                GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null);
-//        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0);
 
         mWidth = width;
         mHeight = height;
