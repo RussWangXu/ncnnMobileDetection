@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+//        applicationId "com.example.ncnnmobiledetection"
+//        archivesBaseName = "$applicationId"
+        minSdkVersion 25
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        ndk {
+            moduleName "ncnnDetection"
+        }
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    buildFeatures {
+//        viewBinding true
+//    }
+    externalNativeBuild {
+        cmake {
+            version "3.10.2"
+            path file('src/main/jni/CMakeLists.txt')
+        }
+
+    }
+    ndkVersion "21.1.6352462"
+
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation files('libs\\classes.jar')
+    implementation files('libs\\CH34xUARTDriver.jar')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    implementation project(':libusbcamera')
+    implementation project(':xvsdk')
+//    implementation(name: 'libusbcommon_v4.1.1', ext: 'aar')
+//    implementation(name: 'libusbcamera', ext: 'aar')
+
+    implementation(name: 'libuvccamera-release', ext: 'aar')
+    implementation(name: 'infiray_lt_m3_sdk', ext: 'aar')
+//    implementation project(path: ':infiray_lt_m3_sdk')
+}

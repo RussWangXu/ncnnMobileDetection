@@ -1,0 +1,93 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 25
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        externalNativeBuild {
+            cmake {
+                arguments "-DCMAKE_BUILD_TYPE=Release"
+                abiFilters "armeabi-v7a" , "arm64-v8a"
+            }
+        }
+        ndk{
+            abiFilters "armeabi-v7a" , "arm64-v8a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable = true
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['../xvsdk/src/main/cpp/xvsdk/libs']
+        }
+    }
+    
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+    ndkVersion '21.1.6352462'
+
+    packagingOptions{
+        pickFirst 'lib_et_SDK.so\n' +
+                'lib_et_TrackerSDK.so\n' +
+                'libAlgInterface.so\n' +
+                'libapriltag.so\n' +
+                'libCertPlatform.so\n' +
+                'libGVRAPI.so\n' +
+                'libhandskeleton.so\n' +
+                'libjpeg-turbo1500.so\n' +
+                'libMNN.so\n' +
+                'liboctomap.so\n' +
+                'libopencv_core.so\n' +
+                'libopencv_imgcodecs.so\n' +
+                'libopencv_imgproc.so\n' +
+                'libSmoothAbout.so\n' +
+                'libsony_iu456.so\n' +
+                'libsqliteX.so\n' +
+                'libusb1.0.so\n' +
+                'libxslam-edge-sdk.so\n' +
+                'libxslam-hid-sdk.so\n' +
+                'libxslam-unity-wrapper.so\n' +
+                'libxslam-usb-sdk.so\n' +
+                'libxslam-uvc-sdk.so\n' +
+                'libxslam-vsc-sdk.so\n' +
+                'libxslam-xv-sdk.so\n' +
+                'libxslam_algo_sdk.so\n' +
+                'libxslam_core.so\n' +
+                'libxslam_hand.so\n' +
+                'libxslam_libange.so\n' +
+                'libxslam_surfacereconstruction.so\n' +
+                'libxvisio_handtracking.so\n' +
+                'libxvsdk_wrapper.so\n' +
+                'libxvuvc.so'
+    }
+}
+
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(dir: 'jniLibs/armeabi-v7a/', include: ['*.so'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

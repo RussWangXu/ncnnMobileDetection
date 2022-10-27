@@ -1,0 +1,21 @@
+//pluginManagement {
+//    repositories {
+//        gradlePluginPortal()
+//        google()
+//        mavenCentral()
+//    }
+//}
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+rootProject.name = "ncnnMobileDetection"
+include ':app'
+include ':testUnsafe'
+include ':libusbcamera'
+include ':xslamLibrary'
+include ':xvsdk'
+include ':infiray_lt_m3_sdk'
